@@ -106,6 +106,16 @@ public class ch1 {
   /* TODO: Write an algo. such that if an elem in an MxN matrix is 0, its entire row and col
            are set to 0
   */
+  public static void setZero(int[][] mat) {
+    int len = mat.length;
+    for (int i=0; i < len; i++) {
+      for (int j=0; j < len; j++) {
+        if (mat[i][j] == 0) {
+           
+        }
+      }
+    }
+  }
 
 
   /* TODO: Given an image represented by an NxN mat, where each pixel in the image is 4 bytes,
