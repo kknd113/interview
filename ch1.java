@@ -107,11 +107,10 @@ public class ch1 {
            are set to 0
   */
   public static int[][] setZero(int[][] mat) {
-    int len = mat.length;
     Hashtable<Integer,Boolean> row = new Hashtable<Integer,Boolean>();
     Hashtable<Integer,Boolean> col = new Hashtable<Integer,Boolean>();
-    for (int i=0; i < len; i++) {
-      for (int j=0; j < len; j++) {
+    for (int i=0; i < mat.length; i++) {
+      for (int j=0; j < mat[i].length; j++) {
         if (mat[i][j] == 0) {
           row.put(i,true);
           col.put(j,true);
@@ -119,8 +118,8 @@ public class ch1 {
       }
     }
 
-    for (int i=0; i < len; i++) {
-      for (int j=0; j < len; j++) {
+    for (int i=0; i < mat.length; i++) {
+      for (int j=0; j < mat[i].length; j++) {
         if (row.get(i) != null || col.get(j) != null) {
           mat[i][j] = 0;
         }
@@ -136,12 +135,27 @@ public class ch1 {
       }
       System.out.println("");
     }
+    System.out.println("");
   }
 
   /* TODO: Given an image represented by an NxN mat, where each pixel in the image is 4 bytes,
            write a method to rotate the image by 90 degress.
            Can you do this in plcae?
   */
+
+  public static void rotateMat(int[][] mat) {
+    int len = mat.length;
+    for (int l=0; l < (len)/2; l++) {
+      for (int i=l; i < len-l-1; i++) {
+        int tmp = mat[i][len-l-1];
+        mat[i][len-l-1] = mat[l][i];
+        mat[l][i] = mat[len-i-1][l];
+        mat[len-i-1][l] = mat[len-1-l][len-1-i];
+        mat[len-1-l][len-1-i] = tmp;
+      }
+    }
+    printMat(mat);
+  }
 
 
   public static void main (String[] args) {
@@ -155,7 +169,12 @@ public class ch1 {
     System.out.println(isRotation("chriskim", "imchrisk"));
     int[][] m = { {1,2,3}, {4,0,6}, {7,8,9} };
     printMat(m);
+    System.out.println("");
     m = setZero(m);
     printMat(m);
+    System.out.println("");
+    int[][] mm = { {10,11,12,13,14},{15,16,17,18,19}, {20,21,22,23,24}, {25,26,27,28,29} , {30,31,32,33,34} };
+    printMat(mm);
+    rotateMat(mm);
   }
 }
