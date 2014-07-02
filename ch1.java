@@ -106,24 +106,44 @@ public class ch1 {
   /* TODO: Write an algo. such that if an elem in an MxN matrix is 0, its entire row and col
            are set to 0
   */
-  public static void setZero(int[][] mat) {
+  public static int[][] setZero(int[][] mat) {
     int len = mat.length;
+    Hashtable<Integer,Boolean> row = new Hashtable<Integer,Boolean>();
+    Hashtable<Integer,Boolean> col = new Hashtable<Integer,Boolean>();
     for (int i=0; i < len; i++) {
       for (int j=0; j < len; j++) {
         if (mat[i][j] == 0) {
-           
+          row.put(i,true);
+          col.put(j,true);
         }
       }
     }
+
+    for (int i=0; i < len; i++) {
+      for (int j=0; j < len; j++) {
+        if (row.get(i) != null || col.get(j) != null) {
+          mat[i][j] = 0;
+        }
+      }
+    }
+    return mat;
   }
 
+  public static void printMat(int[][] mat) {
+    for (int i=0; i < mat.length; i++) {
+      for (int j=0; j < mat[i].length; j++) {
+        System.out.print(mat[i][j] + " ");
+      }
+      System.out.println("");
+    }
+  }
 
   /* TODO: Given an image represented by an NxN mat, where each pixel in the image is 4 bytes,
            write a method to rotate the image by 90 degress.
            Can you do this in plcae?
   */
 
-  
+
   public static void main (String[] args) {
     String s = "reverse this";
     System.out.println(isUniqueFast(s));
@@ -133,5 +153,9 @@ public class ch1 {
     System.out.println(compressString("aaabbccddeeee"));
     System.out.println(isSubstring("wefcccchriislfwek", "chris"));
     System.out.println(isRotation("chriskim", "imchrisk"));
+    int[][] m = { {1,2,3}, {4,0,6}, {7,8,9} };
+    printMat(m);
+    m = setZero(m);
+    printMat(m);
   }
 }
