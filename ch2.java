@@ -141,6 +141,26 @@ public class ch2{
 
     return slow.item;
   }
+
+  public static boolean isPalindrome(List l) {
+    Stack s = new Stack();
+    int len = l.getSize();
+    boolean isOdd = len %2 != 0;
+    Node n = l.head;
+    for (int i=0; i < len/2; i++) {
+      s.push(n.item);
+      n = n.next;
+    }
+    if (isOdd) {
+      n = n.next;
+    }
+    while (n != null) {
+      if (s.pop() != n.item) { return false; }
+      n = n.next;
+    }
+    return true;
+  }
+
   public static void main(String[] args) {
     int[] arr = {1,2,2,1,2,3,3,2,1,3,2,1,1,1,2,3};
     List l = createList(arr);
@@ -182,5 +202,9 @@ public class ch2{
     Node nn = l7.head.next.next;
     l7.tail.next = nn;
     System.out.println(loopBegin(l7));
+
+    int[] arr8 = {5,4,3,4,5,34};
+    List l8 = createList(arr8);
+    System.out.println(isPalindrome(l8));
   }
 }
