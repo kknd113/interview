@@ -142,7 +142,7 @@ public class ch2{
     return slow.item;
   }
 
-  public static boolean isPalindrome(List l) {
+  public static boolean isPalindrome(List l) throws Exception {
     Stack s = new Stack();
     int len = l.getSize();
     boolean isOdd = len %2 != 0;
@@ -161,7 +161,7 @@ public class ch2{
     return true;
   }
 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
     int[] arr = {1,2,2,1,2,3,3,2,1,3,2,1,1,1,2,3};
     List l = createList(arr);
     l = removeDup(l);

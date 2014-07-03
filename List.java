@@ -47,4 +47,24 @@ public class List {
     }
     return size;
   }
+
+  public int removeEnd() {
+    Node n = null;
+    n = this.tail;
+    this.tail = this.tail.prev;
+    if (this.tail != null) {
+      this.tail.next = null;
+    }
+    return n.item;
+  }
+
+  public int removeFront() {
+    Node n = null;
+      n = this.head;
+      this.head = this.head.next;
+      if (this.head != null) {
+        this.head.prev = null;
+      }
+    return n.item;
+  }
 }
